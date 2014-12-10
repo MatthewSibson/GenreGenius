@@ -10,10 +10,10 @@
 		346CEAF91A37CAE700D0D738 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAF81A37CAE700D0D738 /* main.m */; };
 		346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFB1A37CAE700D0D738 /* AppDelegate.m */; };
 		346CEAFF1A37CAE700D0D738 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFE1A37CAE700D0D738 /* ViewController.m */; };
-		346CEB021A37CAE700D0D738 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB001A37CAE700D0D738 /* Main.storyboard */; };
 		346CEB041A37CAE700D0D738 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB031A37CAE700D0D738 /* Images.xcassets */; };
 		346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB051A37CAE700D0D738 /* LaunchScreen.xib */; };
 		346CEB131A37CAE700D0D738 /* GenreGeniusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */; };
+		346CEB221A37E2AD00D0D738 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB201A37E2AD00D0D738 /* Main.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +34,12 @@
 		346CEAFB1A37CAE700D0D738 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		346CEAFD1A37CAE700D0D738 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		346CEAFE1A37CAE700D0D738 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		346CEB011A37CAE700D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		346CEB031A37CAE700D0D738 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		346CEB061A37CAE700D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		346CEB0C1A37CAE700D0D738 /* GenreGeniusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenreGeniusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		346CEB111A37CAE700D0D738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenreGeniusTests.m; sourceTree = "<group>"; };
+		346CEB211A37E2AD00D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 				346CEAFB1A37CAE700D0D738 /* AppDelegate.m */,
 				346CEAFD1A37CAE700D0D738 /* ViewController.h */,
 				346CEAFE1A37CAE700D0D738 /* ViewController.m */,
-				346CEB001A37CAE700D0D738 /* Main.storyboard */,
+				346CEB201A37E2AD00D0D738 /* Main.xib */,
 				346CEB031A37CAE700D0D738 /* Images.xcassets */,
 				346CEB051A37CAE700D0D738 /* LaunchScreen.xib */,
 				346CEAF61A37CAE700D0D738 /* Supporting Files */,
@@ -199,8 +199,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				346CEB021A37CAE700D0D738 /* Main.storyboard in Resources */,
 				346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */,
+				346CEB221A37E2AD00D0D738 /* Main.xib in Resources */,
 				346CEB041A37CAE700D0D738 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,20 +244,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		346CEB001A37CAE700D0D738 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				346CEB011A37CAE700D0D738 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		346CEB051A37CAE700D0D738 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				346CEB061A37CAE700D0D738 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		346CEB201A37E2AD00D0D738 /* Main.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				346CEB211A37E2AD00D0D738 /* Base */,
+			);
+			name = Main.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -412,6 +412,7 @@
 				346CEB181A37CAE700D0D738 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		346CEB191A37CAE700D0D738 /* Build configuration list for PBXNativeTarget "GenreGeniusTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				346CEB1B1A37CAE700D0D738 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
