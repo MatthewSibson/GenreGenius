@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FeedDataProvider.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    FeedDataProvider *feedDataProvider = [[FeedDataProvider alloc] init];
+    [feedDataProvider fetchTopAlbumsFromGenre:GenreGermanFolk limit:15];
+
 }
 
 - (void)didReceiveMemoryWarning {

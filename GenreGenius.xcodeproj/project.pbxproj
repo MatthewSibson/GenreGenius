@@ -14,6 +14,7 @@
 		346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB051A37CAE700D0D738 /* LaunchScreen.xib */; };
 		346CEB131A37CAE700D0D738 /* GenreGeniusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */; };
 		346CEB221A37E2AD00D0D738 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB201A37E2AD00D0D738 /* Main.xib */; };
+		346CEB261A37E7D100D0D738 /* FeedDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB251A37E7D100D0D738 /* FeedDataProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		346CEB111A37CAE700D0D738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenreGeniusTests.m; sourceTree = "<group>"; };
 		346CEB211A37E2AD00D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
+		346CEB241A37E7D100D0D738 /* FeedDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataProvider.h; sourceTree = "<group>"; };
+		346CEB251A37E7D100D0D738 /* FeedDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		346CEAF51A37CAE700D0D738 /* GenreGenius */ = {
 			isa = PBXGroup;
 			children = (
+				346CEB231A37E76700D0D738 /* DataProviders */,
 				346CEAFA1A37CAE700D0D738 /* AppDelegate.h */,
 				346CEAFB1A37CAE700D0D738 /* AppDelegate.m */,
 				346CEAFD1A37CAE700D0D738 /* ViewController.h */,
@@ -117,6 +121,15 @@
 				346CEB111A37CAE700D0D738 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		346CEB231A37E76700D0D738 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				346CEB241A37E7D100D0D738 /* FeedDataProvider.h */,
+				346CEB251A37E7D100D0D738 /* FeedDataProvider.m */,
+			);
+			path = DataProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +234,7 @@
 			files = (
 				346CEAFF1A37CAE700D0D738 /* ViewController.m in Sources */,
 				346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */,
+				346CEB261A37E7D100D0D738 /* FeedDataProvider.m in Sources */,
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
