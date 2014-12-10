@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 Matthew Sibson. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@class FeedData;
+@class FeedEntry;
 
 typedef NS_ENUM(NSInteger, Genre) {
     GenreAll = -1,
@@ -50,6 +53,9 @@ typedef NS_ENUM(NSInteger, Genre) {
     GenreGermanFolk = 50000068,
 };
 
+/** A block that takes `FeedData` and `NSError` to handle the results of a fetch. */
+typedef void (^FeedDataProviderResult)(FeedData *feedData, NSError *error);
+
 @interface FeedDataProvider : NSObject
 
 #pragma mark - Fetches
@@ -58,15 +64,26 @@ typedef NS_ENUM(NSInteger, Genre) {
 * Convenience method to fetch top albums across all genres.
 *
 * @param limit `NSUInteger` maximum number of results to request.
+* @param block `FeedDataProviderResult` block to handle data fetched.
 */
-- (void)fetchTopAlbumsLimit:(NSUInteger)limit;
+- (void)fetchTopAlbumsLimit:(NSUInteger)limit onCompletion:(FeedDataProviderResult)block;
 
 /**
 * Fetch top albums in a given genre with maximum number of results.
 *
 * @param genre A genre specified by the `Genre` enumeration.
 * @param limit `NSUInteger` maximum number of results to request.
+* @param block `FeedDataProviderResult` block to handle data fetched.
 */
-- (void)fetchTopAlbumsFromGenre:(Genre)genre limit:(NSUInteger)limit;
+- (void)fetchTopAlbumsFromGenre:(Genre)genre limit:(NSUInteger)limit onCompletion:(FeedDataProviderResult)block;
+
+/**
+* Fetch representative image for entry at given size.
+*
+* @param feedEntry `FeedEntry` object for which to obtain the image.
+* @param size One of `FeedEntryImageSizeSmall`, `FeedEntryImageSizeMediuml` or `FeedEntryImageSizeLarge`.
+* @param block Block that takes the fetched image and any error that occurred.
+*/
+- (void)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block;
 
 @end

@@ -5,6 +5,9 @@
 
 #import <Foundation/Foundation.h>
 
+FOUNDATION_EXPORT NSString * const FeedEntryImageSizeSmall;
+FOUNDATION_EXPORT NSString * const FeedEntryImageSizeMedium;
+FOUNDATION_EXPORT NSString * const FeedEntryImageSizeLarge;
 
 @interface FeedEntry : NSObject
 
@@ -14,5 +17,13 @@
 @property (nonatomic, strong) NSDictionary *images;
 
 + (instancetype)feedEntryWithDictionary:(NSDictionary *)dictionary;
+
+/**
+* Find URL for the image associated with the entry of a particular size.
+*
+* @param size One of `FeedEntryImageSizeSmall`, `FeedEntryImageSizeMediuml` or `FeedEntryImageSizeLarge`.
+* @return `NSURL` URL to resource.
+*/
+- (NSURL *)URLForImageWithSize:(NSString *)size;
 
 @end

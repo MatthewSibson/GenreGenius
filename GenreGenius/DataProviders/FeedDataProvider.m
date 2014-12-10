@@ -8,6 +8,7 @@
 
 #import "FeedDataProvider.h"
 #import "FeedData.h"
+#import "FeedEntry.h"
 
 @interface FeedDataProvider ()
 
@@ -28,20 +29,51 @@
 
 #pragma mark - Fetches
 
-- (void)fetchTopAlbumsLimit:(NSUInteger)limit
+- (void)fetchTopAlbumsLimit:(NSUInteger)limit onCompletion:(FeedDataProviderResult)block
 {
-    [self fetchTopAlbumsFromGenre:GenreAll limit:limit];
+    [self fetchTopAlbumsFromGenre:GenreAll limit:limit onCompletion:block];
 }
 
-- (void)fetchTopAlbumsFromGenre:(Genre)genre limit:(NSUInteger)limit
+- (void)fetchTopAlbumsFromGenre:(Genre)genre limit:(NSUInteger)limit onCompletion:(FeedDataProviderResult)block
 {
+    NSParameterAssert(block);
+
     NSURL *URL = [self URLForTopAlbumsInGenre:genre limit:limit];
 
-    NSURLSessionDataTask *task = [self.session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        FeedData *feedData = [FeedData feedDataWithDictionary:dictionary];
+    NSURLSessionDataTask *task = [self.session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *sessionError) {
+        if (nil == sessionError) {
+            NSError *serializationError;
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
 
-        NSLog(@"%@", feedData);
+            if (nil == serializationError) {
+                FeedData *feedData = [FeedData feedDataWithDictionary:dictionary];
+
+                block(feedData, nil);
+            } else {
+                block(nil, serializationError);
+            }
+        } else {
+            block(nil, sessionError);
+        }
+    }];
+
+    [task resume];
+}
+
+- (void)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block
+{
+    NSParameterAssert(block);
+
+    NSURL *URL = [feedEntry URLForImageWithSize:size];
+
+    NSURLSessionDataTask *task = [self.session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (nil == error) {
+            UIImage *image = [UIImage imageWithData:data];
+
+            block(image, nil);
+        } else {
+            block(nil, error);
+        }
     }];
 
     [task resume];

@@ -5,6 +5,9 @@
 
 #import "FeedEntry.h"
 
+NSString * const FeedEntryImageSizeSmall = @"55";
+NSString * const FeedEntryImageSizeMedium = @"60";
+NSString * const FeedEntryImageSizeLarge = @"170";
 
 @implementation FeedEntry {
 
@@ -53,6 +56,11 @@
     }
 
     self.images = images;
+}
+
+- (NSURL *)URLForImageWithSize:(NSString *)size
+{
+    return self.images[size];
 }
 
 - (NSString *)description
