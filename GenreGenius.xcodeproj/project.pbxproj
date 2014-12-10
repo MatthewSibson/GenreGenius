@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32264EF6B133057BA74A47B5 /* FeedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 322644CE5D43204EB30DAF87 /* FeedEntry.m */; };
 		346CEAF91A37CAE700D0D738 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAF81A37CAE700D0D738 /* main.m */; };
 		346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFB1A37CAE700D0D738 /* AppDelegate.m */; };
 		346CEAFF1A37CAE700D0D738 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFE1A37CAE700D0D738 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		346CEB131A37CAE700D0D738 /* GenreGeniusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */; };
 		346CEB221A37E2AD00D0D738 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB201A37E2AD00D0D738 /* Main.xib */; };
 		346CEB261A37E7D100D0D738 /* FeedDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB251A37E7D100D0D738 /* FeedDataProvider.m */; };
+		346CEB2C1A37F1A800D0D738 /* FeedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB2B1A37F1A800D0D738 /* FeedData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		322644CE5D43204EB30DAF87 /* FeedEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedEntry.m; sourceTree = "<group>"; };
+		32264C3817CBC29516B7BA26 /* FeedEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedEntry.h; sourceTree = "<group>"; };
 		346CEAF31A37CAE700D0D738 /* GenreGenius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenreGenius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		346CEAF71A37CAE700D0D738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346CEAF81A37CAE700D0D738 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 		346CEB211A37E2AD00D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
 		346CEB241A37E7D100D0D738 /* FeedDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataProvider.h; sourceTree = "<group>"; };
 		346CEB251A37E7D100D0D738 /* FeedDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataProvider.m; sourceTree = "<group>"; };
+		346CEB2A1A37F1A800D0D738 /* FeedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedData.h; sourceTree = "<group>"; };
+		346CEB2B1A37F1A800D0D738 /* FeedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,10 @@
 			children = (
 				346CEB241A37E7D100D0D738 /* FeedDataProvider.h */,
 				346CEB251A37E7D100D0D738 /* FeedDataProvider.m */,
+				346CEB2A1A37F1A800D0D738 /* FeedData.h */,
+				346CEB2B1A37F1A800D0D738 /* FeedData.m */,
+				322644CE5D43204EB30DAF87 /* FeedEntry.m */,
+				32264C3817CBC29516B7BA26 /* FeedEntry.h */,
 			);
 			path = DataProviders;
 			sourceTree = "<group>";
@@ -233,9 +243,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				346CEAFF1A37CAE700D0D738 /* ViewController.m in Sources */,
+				346CEB2C1A37F1A800D0D738 /* FeedData.m in Sources */,
 				346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */,
 				346CEB261A37E7D100D0D738 /* FeedDataProvider.m in Sources */,
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
+				32264EF6B133057BA74A47B5 /* FeedEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

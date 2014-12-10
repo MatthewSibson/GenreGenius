@@ -7,6 +7,7 @@
 //
 
 #import "FeedDataProvider.h"
+#import "FeedData.h"
 
 @interface FeedDataProvider ()
 
@@ -37,8 +38,10 @@
     NSURL *URL = [self URLForTopAlbumsInGenre:genre limit:limit];
 
     NSURLSessionDataTask *task = [self.session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        id JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"%@", JSON);
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        FeedData *feedData = [FeedData feedDataWithDictionary:dictionary];
+
+        NSLog(@"%@", feedData);
     }];
 
     [task resume];
