@@ -15,14 +15,36 @@
 
 @property (nonatomic, strong) FeedDataProvider *feedDataProvider;
 
+@property (nonatomic, weak) IBOutlet UIView *emitterContainer;
+@property (nonatomic, weak) CAEmitterLayer *emitterLayer;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 
+    // Create emitter layer for album star field.
+    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
+
+    // Position emitter layer in middle of container as a point source set back from the viewer in Z.
+    emitterLayer.position = CGPointMake(CGRectGetMidX(self.emitterContainer.bounds), CGRectGetMidY(self.emitterContainer.bounds));
+    emitterLayer.emitterMode = kCAEmitterLayerPoint;
+    emitterLayer.emitterShape = kCAEmitterLayerPoint;
+    emitterLayer.emitterZPosition = -100.0f;
+
+    // Add emitter layer to the container. The container ensures that the emitter will
+    // stay centered on the screen by taking advantage of autolayout.
+    [self.emitterContainer.layer addSublayer:emitterLayer];
+    self.emitterLayer = emitterLayer;
+
+    // Set the perspective of the top layer so moving in Z affects the apparent scale of the sublayers.
+    CATransform3D perspective = CATransform3DIdentity;
+    perspective.m34 = -1.0f / 200.0f;
+    self.view.layer.sublayerTransform = perspective;
+
+    // Kick off fetch of data feed.
     [self fetchDataFeed];
 }
 
@@ -44,7 +66,7 @@
 
 - (void)fetchDataFeed
 {
-    [self.feedDataProvider fetchTopAlbumsFromGenre:GenreGermanFolk limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
+    [self.feedDataProvider fetchTopAlbumsFromGenre:GenreAll limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (nil != error) {
                 NSLog(@"ERROR: %@", error.localizedDescription);
@@ -64,14 +86,31 @@
             if (nil != error) {
                 NSLog(@"ERROR: %@", error.localizedDescription);
             } else {
-                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
+                emitterCell.contents = (__bridge id)image.CGImage;
 
-                imageView.center = CGPointMake(
-                        arc4random_uniform((u_int32_t)CGRectGetWidth(self.view.bounds)),
-                        arc4random_uniform((u_int32_t)CGRectGetHeight(self.view.bounds))
-                );
+                emitterCell.emissionRange = (CGFloat)(2.0 * M_PI);
+                emitterCell.birthRate = 1.0f;
+                emitterCell.lifetime = 3.0f;
+                emitterCell.lifetimeRange = 0.5f;
 
-                [self.view addSubview:imageView];
+                emitterCell.velocity = 100.0f;
+
+                // Cells should accelerate towards the viewer.
+                emitterCell.zAcceleration = 1.0f;
+
+                // Cells should gradually fade to black while moving nearer.
+                emitterCell.blueSpeed = -0.3f;
+                emitterCell.redSpeed = -0.3f;
+                emitterCell.greenSpeed = -0.3f;
+
+                // If this is the first cell create new array otherwise append to existing cells.
+                if (nil == self.emitterLayer.emitterCells) {
+                    self.emitterLayer.emitterCells = @[ emitterCell ];
+                } else {
+                    NSArray *emitterCells = self.emitterLayer.emitterCells;
+                    self.emitterLayer.emitterCells = [emitterCells arrayByAddingObject:emitterCell];
+                }
             }
         });
     }];
