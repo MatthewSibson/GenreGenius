@@ -18,13 +18,72 @@
 @property (nonatomic, weak) IBOutlet UIView *emitterContainer;
 @property (nonatomic, weak) CAEmitterLayer *emitterLayer;
 
+@property (nonatomic, weak) IBOutlet UIView *fieldContainer;
+
 @end
 
 @implementation ViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // Add star field emitter.
+    [self setupEmitter];
+
+    // Add perspective for Z axis.
+    [self setupPerspective];
+
+    // Style and setup initial field state ready for first appearance.
+    [self setupField];
+
+    // Kick off fetch of data feed.
+    [self fetchDataFeed];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    CABasicAnimation *zAnimation = [CABasicAnimation animationWithKeyPath:@"zPosition"];
+
+    zAnimation.fromValue = @(-500.0f);
+    zAnimation.toValue = @(0.0f);
+
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+
+    opacityAnimation.fromValue = @(0.0f);
+    opacityAnimation.toValue = @(1.0f);
+
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+
+    animationGroup.animations = @[
+            zAnimation,
+            opacityAnimation
+    ];
+
+    animationGroup.duration = 1.0;
+    animationGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    [self.fieldContainer.layer addAnimation:animationGroup forKey:@"animationGroup"];
+
+    self.fieldContainer.layer.zPosition = 0.0f;
+    self.fieldContainer.layer.opacity = 1.0f;
+}
+
+#pragma mark - Setup
+
+- (void)setupPerspective
+{
+    // Set the perspective of the top layer so moving in Z affects the apparent scale of the sublayers.
+    CATransform3D perspective = CATransform3DIdentity;
+    perspective.m34 = -1.0f / 200.0f;
+    self.view.layer.sublayerTransform = perspective;
+}
+
+- (void)setupEmitter
+{
     // Create emitter layer for album star field.
     CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
 
@@ -38,14 +97,15 @@
     // stay centered on the screen by taking advantage of autolayout.
     [self.emitterContainer.layer addSublayer:emitterLayer];
     self.emitterLayer = emitterLayer;
+}
 
-    // Set the perspective of the top layer so moving in Z affects the apparent scale of the sublayers.
-    CATransform3D perspective = CATransform3DIdentity;
-    perspective.m34 = -1.0f / 200.0f;
-    self.view.layer.sublayerTransform = perspective;
+- (void)setupField
+{
+    // Position field far away in Z, so we can fly the field in from the distance.
+    self.fieldContainer.layer.zPosition = -500.0f;
 
-    // Kick off fetch of data feed.
-    [self fetchDataFeed];
+    // And at full transparency, so the field materializes in space.
+    self.fieldContainer.layer.opacity = 0.0f;
 }
 
 - (void)didReceiveMemoryWarning {

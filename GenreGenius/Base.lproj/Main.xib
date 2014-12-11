@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="emitterContainer" destination="fEB-l4-t0d" id="mrT-K7-Pb9"/>
+                <outlet property="fieldContainer" destination="ES6-U5-CHc" id="jMb-dM-IxD"/>
                 <outlet property="view" destination="1mK-ac-o7O" id="H8b-8m-NDR"/>
             </connections>
         </placeholder>
@@ -16,18 +17,47 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEB-l4-t0d" userLabel="View - Emitter Container">
-                    <rect key="frame" x="300" y="300" width="2" height="2"/>
+                    <rect key="frame" x="299" y="299" width="2" height="2"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="2" id="4yh-vR-TEG"/>
                         <constraint firstAttribute="height" constant="2" id="Ael-uA-yfx"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ES6-U5-CHc" userLabel="View - Field Container">
+                    <rect key="frame" x="140" y="265" width="320" height="70"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Artist or Song" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IQX-qp-MMk">
+                            <rect key="frame" x="20" y="20" width="280" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="280" id="xAS-tb-jFA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IQX-qp-MMk" firstAttribute="leading" secondItem="ES6-U5-CHc" secondAttribute="leading" constant="20" id="LAG-Ot-3WG"/>
+                        <constraint firstItem="IQX-qp-MMk" firstAttribute="top" secondItem="ES6-U5-CHc" secondAttribute="top" constant="20" id="RPd-9Q-uO1"/>
+                        <constraint firstAttribute="centerX" secondItem="IQX-qp-MMk" secondAttribute="centerX" id="dT5-3J-ire"/>
+                        <constraint firstAttribute="centerY" secondItem="IQX-qp-MMk" secondAttribute="centerY" id="kjV-6m-YcM"/>
+                        <constraint firstAttribute="bottom" secondItem="IQX-qp-MMk" secondAttribute="bottom" constant="20" id="pkZ-WN-tED"/>
+                        <constraint firstAttribute="trailing" secondItem="IQX-qp-MMk" secondAttribute="trailing" constant="20" id="ydB-sD-6DV"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dT5-3J-ire"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="fEB-l4-t0d" secondAttribute="centerX" id="6C3-v2-XpC"/>
                 <constraint firstAttribute="centerY" secondItem="fEB-l4-t0d" secondAttribute="centerY" id="eIT-gj-Vtv"/>
+                <constraint firstAttribute="centerY" secondItem="ES6-U5-CHc" secondAttribute="centerY" id="g7Y-vv-GKe"/>
+                <constraint firstAttribute="centerX" secondItem="ES6-U5-CHc" secondAttribute="centerX" id="nak-yO-zCT"/>
             </constraints>
             <point key="canvasLocation" x="-403" y="119"/>
         </view>
