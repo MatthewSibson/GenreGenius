@@ -17,6 +17,7 @@
 		34DEFBC81A394A240049459D /* FeedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC31A394A240049459D /* FeedData.m */; };
 		34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC51A394A240049459D /* FeedDataProvider.m */; };
 		34DEFBCA1A394A240049459D /* FeedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC71A394A240049459D /* FeedEntry.m */; };
+		34DEFBCE1A394AA10049459D /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBCD1A394AA10049459D /* SearchService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		34DEFBC51A394A240049459D /* FeedDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataProvider.m; sourceTree = "<group>"; };
 		34DEFBC61A394A240049459D /* FeedEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedEntry.h; sourceTree = "<group>"; };
 		34DEFBC71A394A240049459D /* FeedEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedEntry.m; sourceTree = "<group>"; };
+		34DEFBCC1A394AA10049459D /* SearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchService.h; sourceTree = "<group>"; };
+		34DEFBCD1A394AA10049459D /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,7 @@
 		34DEFBC01A394A010049459D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				34DEFBCB1A394A700049459D /* Search */,
 				34DEFBC11A394A0A0049459D /* Feed */,
 			);
 			path = Services;
@@ -148,6 +152,15 @@
 				34DEFBC71A394A240049459D /* FeedEntry.m */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		34DEFBCB1A394A700049459D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				34DEFBCC1A394AA10049459D /* SearchService.h */,
+				34DEFBCD1A394AA10049459D /* SearchService.m */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +269,7 @@
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
 				34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */,
 				34DEFBC81A394A240049459D /* FeedData.m in Sources */,
+				34DEFBCE1A394AA10049459D /* SearchService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

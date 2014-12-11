@@ -10,10 +10,12 @@
 #import "FeedDataProvider.h"
 #import "FeedData.h"
 #import "FeedEntry.h"
+#import "SearchService.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) FeedDataProvider *feedDataProvider;
+@property (nonatomic, strong) SearchService *searchService;
 
 @property (nonatomic, weak) IBOutlet UIView *emitterContainer;
 @property (nonatomic, weak) CAEmitterLayer *emitterLayer;
@@ -113,6 +115,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Text Field Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.searchService searchGenreForTerm:textField.text];
+
+    return YES;
+}
+
+
 #pragma mark - Data Feed
 
 - (FeedDataProvider *)feedDataProvider
@@ -174,6 +186,17 @@
             }
         });
     }];
+}
+
+#pragma mark - Search Service
+
+- (SearchService *)searchService
+{
+    if (nil == _searchService) {
+        _searchService = [[SearchService alloc] init];
+    }
+
+    return _searchService;
 }
 
 @end
