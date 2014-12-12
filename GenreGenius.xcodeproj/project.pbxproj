@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		346CEAF91A37CAE700D0D738 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAF81A37CAE700D0D738 /* main.m */; };
 		346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFB1A37CAE700D0D738 /* AppDelegate.m */; };
-		346CEAFF1A37CAE700D0D738 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEAFE1A37CAE700D0D738 /* SearchViewController.m */; };
 		346CEB041A37CAE700D0D738 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB031A37CAE700D0D738 /* Images.xcassets */; };
 		346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB051A37CAE700D0D738 /* LaunchScreen.xib */; };
 		346CEB131A37CAE700D0D738 /* GenreGeniusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */; };
-		346CEB221A37E2AD00D0D738 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB201A37E2AD00D0D738 /* Main.xib */; };
+		346CEB221A37E2AD00D0D738 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346CEB201A37E2AD00D0D738 /* SearchView.xib */; };
 		34DEFBC81A394A240049459D /* FeedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC31A394A240049459D /* FeedData.m */; };
 		34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC51A394A240049459D /* FeedDataProvider.m */; };
 		34DEFBCA1A394A240049459D /* FeedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC71A394A240049459D /* FeedEntry.m */; };
 		34DEFBCE1A394AA10049459D /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBCD1A394AA10049459D /* SearchService.m */; };
+		34DEFBDA1A3A7CE30049459D /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBD91A3A7CE30049459D /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +36,12 @@
 		346CEAF81A37CAE700D0D738 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		346CEAFA1A37CAE700D0D738 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		346CEAFB1A37CAE700D0D738 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		346CEAFD1A37CAE700D0D738 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		346CEAFE1A37CAE700D0D738 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		346CEB031A37CAE700D0D738 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		346CEB061A37CAE700D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		346CEB0C1A37CAE700D0D738 /* GenreGeniusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenreGeniusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		346CEB111A37CAE700D0D738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346CEB121A37CAE700D0D738 /* GenreGeniusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenreGeniusTests.m; sourceTree = "<group>"; };
-		346CEB211A37E2AD00D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
+		346CEB211A37E2AD00D0D738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchView.xib; sourceTree = "<group>"; };
 		34DEFBC21A394A240049459D /* FeedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedData.h; sourceTree = "<group>"; };
 		34DEFBC31A394A240049459D /* FeedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedData.m; sourceTree = "<group>"; };
 		34DEFBC41A394A240049459D /* FeedDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataProvider.h; sourceTree = "<group>"; };
@@ -53,6 +51,8 @@
 		34DEFBCC1A394AA10049459D /* SearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchService.h; sourceTree = "<group>"; };
 		34DEFBCD1A394AA10049459D /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
 		34DEFBD41A3A72660049459D /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		34DEFBD81A3A7CE30049459D /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		34DEFBD91A3A7CE30049459D /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,12 +94,10 @@
 		346CEAF51A37CAE700D0D738 /* GenreGenius */ = {
 			isa = PBXGroup;
 			children = (
+				34DEFBD71A3A7C330049459D /* UI */,
 				34DEFBC01A394A010049459D /* Services */,
 				346CEAFA1A37CAE700D0D738 /* AppDelegate.h */,
 				346CEAFB1A37CAE700D0D738 /* AppDelegate.m */,
-				346CEAFD1A37CAE700D0D738 /* SearchViewController.h */,
-				346CEAFE1A37CAE700D0D738 /* SearchViewController.m */,
-				346CEB201A37E2AD00D0D738 /* Main.xib */,
 				346CEB031A37CAE700D0D738 /* Images.xcassets */,
 				346CEB051A37CAE700D0D738 /* LaunchScreen.xib */,
 				346CEAF61A37CAE700D0D738 /* Supporting Files */,
@@ -171,6 +169,16 @@
 				34DEFBD41A3A72660049459D /* Genre.h */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		34DEFBD71A3A7C330049459D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				346CEB201A37E2AD00D0D738 /* SearchView.xib */,
+				34DEFBD81A3A7CE30049459D /* SearchViewController.h */,
+				34DEFBD91A3A7CE30049459D /* SearchViewController.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */,
-				346CEB221A37E2AD00D0D738 /* Main.xib in Resources */,
+				346CEB221A37E2AD00D0D738 /* SearchView.xib in Resources */,
 				346CEB041A37CAE700D0D738 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,12 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34DEFBCA1A394A240049459D /* FeedEntry.m in Sources */,
-				346CEAFF1A37CAE700D0D738 /* SearchViewController.m in Sources */,
 				346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */,
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
 				34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */,
 				34DEFBC81A394A240049459D /* FeedData.m in Sources */,
 				34DEFBCE1A394AA10049459D /* SearchService.m in Sources */,
+				34DEFBDA1A3A7CE30049459D /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,12 +318,13 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		346CEB201A37E2AD00D0D738 /* Main.xib */ = {
+		346CEB201A37E2AD00D0D738 /* SearchView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				346CEB211A37E2AD00D0D738 /* Base */,
 			);
-			name = Main.xib;
+			name = SearchView.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

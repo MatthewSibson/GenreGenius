@@ -21,7 +21,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    SearchViewController *viewController = [[SearchViewController alloc] initWithNibName:@"Main" bundle:nil];
+    SearchViewController *viewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
     [self.window setRootViewController:viewController];
 
     [self.window makeKeyAndVisible];
