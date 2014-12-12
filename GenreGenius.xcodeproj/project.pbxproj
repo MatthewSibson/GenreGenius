@@ -52,6 +52,7 @@
 		34DEFBC71A394A240049459D /* FeedEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedEntry.m; sourceTree = "<group>"; };
 		34DEFBCC1A394AA10049459D /* SearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchService.h; sourceTree = "<group>"; };
 		34DEFBCD1A394AA10049459D /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
+		34DEFBD41A3A72660049459D /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +136,7 @@
 		34DEFBC01A394A010049459D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				34DEFBD31A3A724B0049459D /* Common */,
 				34DEFBCB1A394A700049459D /* Search */,
 				34DEFBC11A394A0A0049459D /* Feed */,
 			);
@@ -161,6 +163,14 @@
 				34DEFBCD1A394AA10049459D /* SearchService.m */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		34DEFBD31A3A724B0049459D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				34DEFBD41A3A72660049459D /* Genre.h */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

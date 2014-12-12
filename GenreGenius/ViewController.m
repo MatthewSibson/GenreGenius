@@ -41,7 +41,7 @@
     [self setupField];
 
     // Kick off fetch of data feed.
-    [self fetchDataFeed];
+    [self fetchStarFieldFeed];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,7 +119,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.searchService searchGenreForTerm:textField.text];
+    [self.searchService searchGenreForTerm:textField.text onCompletion:^(Genre genre, NSError *error) {
+        if (nil == error && genre != GenreInvalid) {
+            [self fetchAlbumsFromGenre:genre];
+        }
+    }];
 
     return YES;
 }
@@ -136,7 +140,7 @@
     return _feedDataProvider;
 }
 
-- (void)fetchDataFeed
+- (void)fetchStarFieldFeed
 {
     [self.feedDataProvider fetchTopAlbumsFromGenre:GenreAll limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -144,14 +148,14 @@
                 NSLog(@"ERROR: %@", error.localizedDescription);
             } else {
                 for (FeedEntry *feedEntry in feedData.entries) {
-                    [self fetchAndDisplayImageForFeedEntry:feedEntry];
+                    [self fetchAndDisplayStarFieldImageForFeedEntry:feedEntry];
                 }
             }
         });
     }];
 }
 
-- (void)fetchAndDisplayImageForFeedEntry:(FeedEntry *)feedEntry
+- (void)fetchAndDisplayStarFieldImageForFeedEntry:(FeedEntry *)feedEntry
 {
     [self.feedDataProvider fetchImageForFeedEntry:feedEntry size:FeedEntryImageSizeMedium onCompletion:^(UIImage *image, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -183,6 +187,22 @@
                     NSArray *emitterCells = self.emitterLayer.emitterCells;
                     self.emitterLayer.emitterCells = [emitterCells arrayByAddingObject:emitterCell];
                 }
+            }
+        });
+    }];
+}
+
+- (void)fetchAlbumsFromGenre:(Genre)genre
+{
+    [self.feedDataProvider fetchTopAlbumsFromGenre:genre limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (nil != error) {
+                NSLog(@"ERROR: %@", error.localizedDescription);
+            } else {
+                NSLog(@"feedData = %@", feedData);
+//                for (FeedEntry *feedEntry in feedData.entries) {
+//                    [self fetchAndDisplayStarFieldImageForFeedEntry:feedEntry];
+//                }
             }
         });
     }];

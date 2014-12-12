@@ -7,51 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Genre.h"
 
 @class FeedData;
 @class FeedEntry;
-
-typedef NS_ENUM(NSInteger, Genre) {
-    GenreAll = -1,
-    GenreBlues = 2,
-    GenreComedy = 3,
-    GenreChildrensMusic = 4,
-    GenreClassical = 5,
-    GenreCountry = 6,
-    GenreElectronic = 7,
-    GenreHoliday = 8,
-    GenreOpera = 9,
-    GenreSingerSongwriter = 10,
-    GenreJazz = 11,
-    GenreLatino = 12,
-    GenreNewAge = 13,
-    GenrePop = 14,
-    GenreRBSoul = 15,
-    GenreSoundtrack = 16,
-    GenreDance = 17,
-    GenreHipHopRap = 18,
-    GenreWorld = 19,
-    GenreAlternative = 20,
-    GenreRock = 21,
-    GenreChristianGospel = 22,
-    GenreVocal = 23,
-    GenreReggae = 24,
-    GenreEasyListening = 25,
-    GenreJPop = 27,
-    GenreEnka = 28,
-    GenreAnime = 29,
-    GenreKayokyoku = 30,
-    GenreFitnessWorkout = 50,
-    GenreKPop = 51,
-    GenreKaraoke = 52,
-    GenreInstrumental = 53,
-    GenreBrazilian = 1122,
-    GenreSpokenWord = 50000061,
-    GenreDisney = 50000063,
-    GenreFrenchPop = 50000064,
-    GenreGermanPop = 50000066,
-    GenreGermanFolk = 50000068,
-};
 
 /** A block that takes `FeedData` and `NSError` to handle the results of a fetch. */
 typedef void (^FeedDataProviderResult)(FeedData *feedData, NSError *error);

@@ -91,6 +91,8 @@
 */
 - (NSURL *)URLForTopAlbumsInGenre:(Genre)genre limit:(NSUInteger)limit
 {
+    NSAssert(genre != GenreInvalid, @"Cannot build URL for invalid genre.");
+
     // Hard code to US top albums for now.
     NSMutableString *path = [@"/us/rss/topalbums" mutableCopy];
 

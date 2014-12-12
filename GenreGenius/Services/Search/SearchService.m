@@ -25,8 +25,12 @@
     return self;
 }
 
-- (void)searchGenreForTerm:(NSString *)term
+- (void)searchGenreForTerm:(NSString *)term onCompletion:(void (^)(Genre genre, NSError *error))block
 {
+    NSParameterAssert(block);
+
+    // Build URL with only one result to return, we're depending on the search API to give back the most
+    // relevant result for the search term. Better results could be sought later by analysing more results.
     NSURL *URL = [self URLForSearchTerm:term limit:1];
 
     NSURLSessionDataTask *task = [self.session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *sessionError) {
@@ -34,8 +38,27 @@
             NSError *serializationError;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
 
-            NSLog(@"%@", dictionary);
-            NSLog(@"%@", dictionary[@"results"][0][@"primaryGenreName"]);
+            if (nil == serializationError) {
+                // As there is only one result, pull last object from the array which would be the one and only
+                // result. If there are no results, last object will be nil and sending objectForKey: to nil will
+                // still be nil.
+                NSNumber *genreId = [dictionary[@"results"] lastObject][@"primaryGenreId"];
+
+                if (nil == genreId) {
+                    // If the genreId was nil, either there were no results or a primaryGenreId was not specified
+                    // for the result. Either way we'll treat this as an unknown or invalid genre.
+                    block(GenreInvalid, nil);
+                } else {
+                    // Otherwise a genre was found, unpack the value from the NSNumber and cast to the Genre type.
+                    block((Genre)[genreId integerValue], nil);
+                }
+            } else {
+                // Deserialization failed, so pass the error back together with an invalid genre.
+                block(GenreInvalid, serializationError);
+            }
+        } else {
+            // Some error occurred fetching the data, so pass the error back together with an invalid genre.
+            block(GenreInvalid, sessionError);
         }
     }];
 
