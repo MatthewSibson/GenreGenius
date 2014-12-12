@@ -17,12 +17,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    // Initialize root view controller for navigation stack.
     SearchViewController *viewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
-    [self.window setRootViewController:viewController];
+
+    // Create a navigation controller to manage the view controller hierarchy.
+    // We'll be providing our own navigation so no navigation bar is needed.
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.navigationBarHidden = YES;
+
+    // Create the main window with the navigation controller at the root.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:navigationController];
 
     [self.window makeKeyAndVisible];
 
