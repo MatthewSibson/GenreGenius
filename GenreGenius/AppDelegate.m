@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "SearchViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ViewController *viewController = [[ViewController alloc] initWithNibName:@"Main" bundle:nil];
+    SearchViewController *viewController = [[SearchViewController alloc] initWithNibName:@"Main" bundle:nil];
     [self.window setRootViewController:viewController];
 
     [self.window makeKeyAndVisible];

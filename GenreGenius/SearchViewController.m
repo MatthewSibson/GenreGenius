@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  SearchViewController.m
 //  GenreGenius
 //
 //  Created by Matthew Sibson on 12/9/14.
 //  Copyright (c) 2014 Matthew Sibson. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SearchViewController.h"
 #import "FeedDataProvider.h"
 #import "FeedData.h"
 #import "FeedEntry.h"
 #import "SearchService.h"
 
-@interface ViewController () <UITextFieldDelegate>
+@interface SearchViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) FeedDataProvider *feedDataProvider;
 @property (nonatomic, strong) SearchService *searchService;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation ViewController
+@implementation SearchViewController
 
 #pragma mark - Lifecycle
 
