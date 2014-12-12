@@ -42,7 +42,9 @@ typedef void (^FeedDataProviderResult)(FeedData *feedData, NSError *error);
 * @param feedEntry `FeedEntry` object for which to obtain the image.
 * @param size One of `FeedEntryImageSizeSmall`, `FeedEntryImageSizeMediuml` or `FeedEntryImageSizeLarge`.
 * @param block Block that takes the fetched image and any error that occurred.
+*
+* @return `NSURLSessionDataTask` that is handling the fetch, to allow caller to cancel request.
 */
-- (void)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block;
+- (NSURLSessionDataTask *)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block;
 
 @end

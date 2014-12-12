@@ -26,7 +26,7 @@ NSString * const FeedEntryImageSizeLarge = @"170";
 {
     NSArray *ignoredKeys = @[
             @"im:itemCount", @"im:price", @"im:contentType", @"rights", @"title",
-            @"id", @"category", @"im:releaseDate", @"link"
+            @"id", @"category", @"im:releaseDate"
     ];
 
     if ([ignoredKeys containsObject:key]) {
@@ -35,6 +35,9 @@ NSString * const FeedEntryImageSizeLarge = @"170";
         self.name = value[@"label"];
     } else if ([key isEqualToString:@"im:artist"]) {
         self.artist = value[@"label"];
+    } else if ([key isEqualToString:@"link"]) {
+        NSString *href = value[@"attributes"][@"href"];
+        self.link = [NSURL URLWithString:href];
     } else if ([key isEqualToString:@"im:image"]) {
         [self setImagesWithValue:value];
     } else {

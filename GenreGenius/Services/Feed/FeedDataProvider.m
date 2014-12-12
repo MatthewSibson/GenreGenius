@@ -60,7 +60,7 @@
     [task resume];
 }
 
-- (void)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block
+- (NSURLSessionDataTask *)fetchImageForFeedEntry:(FeedEntry *)feedEntry size:(NSString *)size onCompletion:(void (^)(UIImage *image, NSError *error))block
 {
     NSParameterAssert(block);
 
@@ -77,6 +77,8 @@
     }];
 
     [task resume];
+    
+    return task;
 }
 
 #pragma mark - Helpers

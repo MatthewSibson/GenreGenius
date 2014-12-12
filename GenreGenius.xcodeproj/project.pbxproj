@@ -18,6 +18,9 @@
 		34DEFBCA1A394A240049459D /* FeedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBC71A394A240049459D /* FeedEntry.m */; };
 		34DEFBCE1A394AA10049459D /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBCD1A394AA10049459D /* SearchService.m */; };
 		34DEFBDA1A3A7CE30049459D /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBD91A3A7CE30049459D /* SearchViewController.m */; };
+		34DEFBDD1A3A7E6E0049459D /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DEFBDB1A3A7E6E0049459D /* ResultsView.xib */; };
+		34DEFBE01A3A7E810049459D /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBDF1A3A7E810049459D /* ResultsViewController.m */; };
+		34DEFBE31A3A81F20049459D /* ResultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		34DEFBD41A3A72660049459D /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
 		34DEFBD81A3A7CE30049459D /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		34DEFBD91A3A7CE30049459D /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		34DEFBDC1A3A7E6E0049459D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = GenreGenius/Base.lproj/ResultsView.xib; sourceTree = SOURCE_ROOT; };
+		34DEFBDE1A3A7E810049459D /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		34DEFBDF1A3A7E810049459D /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		34DEFBE11A3A81F20049459D /* ResultCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCollectionViewCell.h; sourceTree = "<group>"; };
+		34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +185,11 @@
 				346CEB201A37E2AD00D0D738 /* SearchView.xib */,
 				34DEFBD81A3A7CE30049459D /* SearchViewController.h */,
 				34DEFBD91A3A7CE30049459D /* SearchViewController.m */,
+				34DEFBDB1A3A7E6E0049459D /* ResultsView.xib */,
+				34DEFBDE1A3A7E810049459D /* ResultsViewController.h */,
+				34DEFBDF1A3A7E810049459D /* ResultsViewController.m */,
+				34DEFBE11A3A81F20049459D /* ResultCollectionViewCell.h */,
+				34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -262,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				346CEB071A37CAE700D0D738 /* LaunchScreen.xib in Resources */,
+				34DEFBDD1A3A7E6E0049459D /* ResultsView.xib in Resources */,
 				346CEB221A37E2AD00D0D738 /* SearchView.xib in Resources */,
 				346CEB041A37CAE700D0D738 /* Images.xcassets in Resources */,
 			);
@@ -284,7 +298,9 @@
 				34DEFBCA1A394A240049459D /* FeedEntry.m in Sources */,
 				346CEAFC1A37CAE700D0D738 /* AppDelegate.m in Sources */,
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
+				34DEFBE01A3A7E810049459D /* ResultsViewController.m in Sources */,
 				34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */,
+				34DEFBE31A3A81F20049459D /* ResultCollectionViewCell.m in Sources */,
 				34DEFBC81A394A240049459D /* FeedData.m in Sources */,
 				34DEFBCE1A394AA10049459D /* SearchService.m in Sources */,
 				34DEFBDA1A3A7CE30049459D /* SearchViewController.m in Sources */,
@@ -325,6 +341,14 @@
 			);
 			name = SearchView.xib;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		34DEFBDB1A3A7E6E0049459D /* ResultsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34DEFBDC1A3A7E6E0049459D /* Base */,
+			);
+			name = ResultsView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

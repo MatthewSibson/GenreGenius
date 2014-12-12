@@ -13,6 +13,7 @@ FOUNDATION_EXPORT NSString * const FeedEntryImageSizeLarge;
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *artist;
+@property (nonatomic, strong) NSURL *link;
 
 @property (nonatomic, strong) NSDictionary *images;
 

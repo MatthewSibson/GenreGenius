@@ -27,6 +27,7 @@
 
 - (void)searchGenreForTerm:(NSString *)term onCompletion:(void (^)(Genre genre, NSError *error))block
 {
+    NSParameterAssert(term);
     NSParameterAssert(block);
 
     // Build URL with only one result to return, we're depending on the search API to give back the most

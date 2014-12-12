@@ -11,6 +11,7 @@
 #import "FeedData.h"
 #import "FeedEntry.h"
 #import "SearchService.h"
+#import "ResultsViewController.h"
 
 @interface SearchViewController () <UITextFieldDelegate>
 
@@ -119,15 +120,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.searchService searchGenreForTerm:textField.text onCompletion:^(Genre genre, NSError *error) {
-        if (nil == error && genre != GenreInvalid) {
-            [self fetchAlbumsFromGenre:genre];
-        }
-    }];
+    if (nil != textField.text && ![textField.text isEqualToString:@""]) {
+        [self searchForTerm:textField.text];
+    }
 
     return YES;
 }
-
 
 #pragma mark - Data Feed
 
@@ -192,22 +190,6 @@
     }];
 }
 
-- (void)fetchAlbumsFromGenre:(Genre)genre
-{
-    [self.feedDataProvider fetchTopAlbumsFromGenre:genre limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (nil != error) {
-                NSLog(@"ERROR: %@", error.localizedDescription);
-            } else {
-                NSLog(@"feedData = %@", feedData);
-//                for (FeedEntry *feedEntry in feedData.entries) {
-//                    [self fetchAndDisplayStarFieldImageForFeedEntry:feedEntry];
-//                }
-            }
-        });
-    }];
-}
-
 #pragma mark - Search Service
 
 - (SearchService *)searchService
@@ -217,6 +199,21 @@
     }
 
     return _searchService;
+}
+
+- (void)searchForTerm:(NSString *)term
+{
+    [self.searchService searchGenreForTerm:term onCompletion:^(Genre genre, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (nil == error && genre != GenreInvalid) {
+                ResultsViewController *viewController = [[ResultsViewController alloc] initWithNibName:nil bundle:nil];
+
+                [viewController displayResultsForGenre:genre];
+
+                [self.navigationController pushViewController:viewController animated:YES];
+            }
+        });
+    }];
 }
 
 @end
