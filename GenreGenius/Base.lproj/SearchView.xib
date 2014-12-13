@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="emitterContainer" destination="fEB-l4-t0d" id="mrT-K7-Pb9"/>
                 <outlet property="fieldContainer" destination="ES6-U5-CHc" id="jMb-dM-IxD"/>
+                <outlet property="textField" destination="IQX-qp-MMk" id="KO9-la-Psw"/>
                 <outlet property="view" destination="1mK-ac-o7O" id="H8b-8m-NDR"/>
             </connections>
         </placeholder>
@@ -33,7 +34,7 @@
                                 <constraint firstAttribute="width" constant="280" id="xAS-tb-jFA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="ajh-bh-j3R"/>
                             </connections>

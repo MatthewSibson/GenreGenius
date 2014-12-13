@@ -22,6 +22,7 @@
 @property (nonatomic, weak) CAEmitterLayer *emitterLayer;
 
 @property (nonatomic, weak) IBOutlet UIView *fieldContainer;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
 
 @end
 
@@ -116,6 +117,9 @@
 
     // And at full transparency, so the field materializes in space.
     self.fieldContainer.layer.opacity = 0.0f;
+
+    // Clear field.
+    self.textField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,6 +152,8 @@
     if (nil != textField.text && ![textField.text isEqualToString:@""]) {
         [self searchForTerm:textField.text];
     }
+
+    [textField resignFirstResponder];
 
     return YES;
 }
