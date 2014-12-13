@@ -56,7 +56,9 @@
     [self.feedDataProvider fetchTopAlbumsFromGenre:genre limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (nil != error) {
-                NSLog(@"ERROR: %@", error.localizedDescription);
+                [self showError:error.localizedDescription];
+
+                [self.navigationController popViewControllerAnimated:YES];
             } else {
                 self.feedEntries = feedData.entries;
 
@@ -64,6 +66,18 @@
             }
         });
     }];
+}
+
+#pragma mark - Helper
+
+- (void)showError:(NSString *)error
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                        message:error
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 #pragma mark - Collection View Data Source
@@ -86,16 +100,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FeedEntry *feedEntry = self.feedEntries[(NSUInteger)indexPath.item];
-
-
-
 #if TARGET_IPHONE_SIMULATOR
+    // Nothing we can do on simulator at this point since there is no iTunes store.
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"iTunes Store is not supported on the iOS simulator." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 #else
+    // Once the user taps on an album link out to the iTunes store.
+    FeedEntry *feedEntry = self.feedEntries[(NSUInteger)indexPath.item];
+
     [[UIApplication sharedApplication] openURL:feedEntry.link];
 #endif
+    
+    // Just to make the demo easier, pop back to the initial screen so we can start over.
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

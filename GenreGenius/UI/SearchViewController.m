@@ -116,6 +116,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Helper
+
+- (void)showError:(NSString *)error
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                        message:error
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
 #pragma mark - Text Field Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -143,7 +155,7 @@
     [self.feedDataProvider fetchTopAlbumsFromGenre:GenreAll limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (nil != error) {
-                NSLog(@"ERROR: %@", error.localizedDescription);
+                [self showError:error.localizedDescription];
             } else {
                 for (FeedEntry *feedEntry in feedData.entries) {
                     [self fetchAndDisplayStarFieldImageForFeedEntry:feedEntry];
@@ -158,7 +170,7 @@
     [self.feedDataProvider fetchImageForFeedEntry:feedEntry size:FeedEntryImageSizeMedium onCompletion:^(UIImage *image, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (nil != error) {
-                NSLog(@"ERROR: %@", error.localizedDescription);
+                [self showError:error.localizedDescription];
             } else {
                 CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
                 emitterCell.contents = (__bridge id)image.CGImage;
@@ -211,6 +223,12 @@
                 [viewController displayResultsForGenre:genre];
 
                 [self.navigationController pushViewController:viewController animated:YES];
+            } else {
+                if (nil != error) {
+                    [self showError:error.localizedDescription];
+                } else {
+                    [self showError:@"Invalid or mising genre."];
+                }
             }
         });
     }];
