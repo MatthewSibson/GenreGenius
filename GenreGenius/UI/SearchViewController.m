@@ -49,27 +49,25 @@
 {
     [super viewDidAppear:animated];
 
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:1.0];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+
     CABasicAnimation *zAnimation = [CABasicAnimation animationWithKeyPath:@"zPosition"];
 
-    zAnimation.fromValue = @(-500.0f);
+    zAnimation.fromValue = @(300.0f);
     zAnimation.toValue = @(0.0f);
+
+    [self.fieldContainer.layer addAnimation:zAnimation forKey:@"zPosition"];
 
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 
     opacityAnimation.fromValue = @(0.0f);
     opacityAnimation.toValue = @(1.0f);
 
-    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    [self.fieldContainer.layer addAnimation:opacityAnimation forKey:@"opacity"];
 
-    animationGroup.animations = @[
-            zAnimation,
-            opacityAnimation
-    ];
-
-    animationGroup.duration = 1.0;
-    animationGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
-    [self.fieldContainer.layer addAnimation:animationGroup forKey:@"animationGroup"];
+    [CATransaction commit];
 
     self.fieldContainer.layer.zPosition = 0.0f;
     self.fieldContainer.layer.opacity = 1.0f;
