@@ -51,6 +51,13 @@
     return _feedDataProvider;
 }
 
+/**
+* Fetches albums relevant to the passed genre and reloads the data shown by the collection view.
+*
+* On reload a cell is produced for each feed entry and the album image is loaded by the cell.
+*
+* @param genre `Genre` to search for albums in.
+*/
 - (void)fetchAlbumsFromGenre:(Genre)genre
 {
     [self.feedDataProvider fetchTopAlbumsFromGenre:genre limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
@@ -70,6 +77,11 @@
 
 #pragma mark - Helper
 
+/**
+* Display generic error alert.
+*
+* @param error `NSString` for message to display.
+*/
 - (void)showError:(NSString *)error
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
@@ -89,6 +101,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Create a cell to display the feed entry, passing a feed data provider so that it can load an album image.
+    //
+    // I'd have liked to subclass UICollectionViewFlowLayout to animate in cells as images loaded instead of
+    // having them all put in place here, but I'm short on time: Using initialLayoutAttributesForAppearingItemAtIndexPath:
+    // to specify somewhere off screen and have the cells fly in as images were loaded.
     ResultCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
 
     [cell displayFeedEntry:self.feedEntries[(NSUInteger)indexPath.item] fromFeedDataProvider:self.feedDataProvider];

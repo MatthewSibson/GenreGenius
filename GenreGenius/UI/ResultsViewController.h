@@ -11,6 +11,12 @@
 
 @interface ResultsViewController : UIViewController
 
+/**
+* Prime the view controller with the genre to display results for, ready for when the
+* view controller is entered into to the hierarchy and the view loads.
+*
+* @param genre `Genre` to fetch albums for.
+*/
 - (void)displayResultsForGenre:(Genre)genre;
 
 @end

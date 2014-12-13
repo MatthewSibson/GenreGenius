@@ -30,6 +30,7 @@
 
 - (void)setup
 {
+    // this is not a complex cell, so just do some basic autolayout code here.
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -63,6 +64,8 @@
     // Pass a weak reference to self to the block so the cell is not retained by the pending `NSURLSessionDataTask`.
     __weak ResultCollectionViewCell *weakSelf = self;
 
+    // Request the album image from the passed feed data provider, storing the task so that we can cancel
+    // the fetch if the cell is reused or deallocated before the request completes.
     self.task = [feedDataProvider fetchImageForFeedEntry:feedEntry size:FeedEntryImageSizeLarge onCompletion:^(UIImage *image, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong ResultCollectionViewCell *strongSelf = weakSelf;

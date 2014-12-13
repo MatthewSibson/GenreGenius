@@ -53,6 +53,7 @@
     [CATransaction setAnimationDuration:1.0];
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 
+    // Fly field from in front of user to center of the z-plane.
     CABasicAnimation *zAnimation = [CABasicAnimation animationWithKeyPath:@"zPosition"];
 
     zAnimation.fromValue = @(300.0f);
@@ -60,6 +61,7 @@
 
     [self.fieldContainer.layer addAnimation:zAnimation forKey:@"zPosition"];
 
+    // Have the field fade in while it flies.
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 
     opacityAnimation.fromValue = @(0.0f);
@@ -69,6 +71,8 @@
 
     [CATransaction commit];
 
+    // Core animation acts on a model of the layer, leaving the real values untouched so ensure that
+    // the field is positioned and in view at the end of the transition.
     self.fieldContainer.layer.zPosition = 0.0f;
     self.fieldContainer.layer.opacity = 1.0f;
 }
@@ -116,6 +120,11 @@
 
 #pragma mark - Helper
 
+/**
+* Display generic error alert.
+*
+* @param error `NSString` for message to display.
+*/
 - (void)showError:(NSString *)error
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
@@ -130,6 +139,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    // Handle enter pressed in text field by starting the search.
     if (nil != textField.text && ![textField.text isEqualToString:@""]) {
         [self searchForTerm:textField.text];
     }
@@ -148,6 +158,9 @@
     return _feedDataProvider;
 }
 
+/**
+* Fetch the top albums for all genres to populate the star field.
+*/
 - (void)fetchStarFieldFeed
 {
     [self.feedDataProvider fetchTopAlbumsFromGenre:GenreAll limit:15 onCompletion:^(FeedData *feedData, NSError *error) {
@@ -163,6 +176,12 @@
     }];
 }
 
+/**
+* Fetch images for each entry in the top album feed and add a new cell to the
+* emitter with each album that is retrieved.
+*
+* @param feedEntry `FeedEntry` to pull image for.
+*/
 - (void)fetchAndDisplayStarFieldImageForFeedEntry:(FeedEntry *)feedEntry
 {
     [self.feedDataProvider fetchImageForFeedEntry:feedEntry size:FeedEntryImageSizeMedium onCompletion:^(UIImage *image, NSError *error) {
@@ -211,6 +230,12 @@
     return _searchService;
 }
 
+/**
+* Start a search for the entered term, that when successful will push the results view controller
+* onto the navigation stack in order to display the albums found.
+*
+* @param term `NSString` with term to search for.
+*/
 - (void)searchForTerm:(NSString *)term
 {
     [self.searchService searchGenreForTerm:term onCompletion:^(Genre genre, NSError *error) {
@@ -218,6 +243,7 @@
             if (nil == error && genre != GenreInvalid) {
                 ResultsViewController *viewController = [[ResultsViewController alloc] initWithNibName:nil bundle:nil];
 
+                // Provide the genre that the results controller should display ready for its presentation.
                 [viewController displayResultsForGenre:genre];
 
                 [self.navigationController pushViewController:viewController animated:YES];

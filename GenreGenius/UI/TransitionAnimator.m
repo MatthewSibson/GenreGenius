@@ -17,9 +17,12 @@
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
+    // Obtain the view controllers involved in the transition.
     UIViewController *s = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *d = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
+    // Get the container and set a transform on the layer to apply to the coordinates of sublayers
+    // so that the apparent scale of layers change as the move in Z.
     UIView *container = [transitionContext containerView];
 
     CATransform3D perspective = CATransform3DIdentity;
@@ -28,13 +31,17 @@
 
     [container addSubview:d.view];
 
+    // The animation itself, which consists of the existing view falling away and fading out
+    // and the new view fading in and appearing to fall from "behind" the screen and into place
     [CATransaction begin];
     [CATransaction setAnimationDuration:[self transitionDuration:transitionContext]];
 
+    // Set completion block to signal when the animations end and the transition is completed.
     [CATransaction setCompletionBlock:^{
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
 
+    // Source or "from" fades out and drops away.
     CABasicAnimation *sOpacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
     sOpacity.fromValue = @(1.0f);
     sOpacity.toValue = @(0.0f);
@@ -45,6 +52,7 @@
     sZoom.toValue = @(-300.0f);
     [s.view.layer addAnimation:sZoom forKey:@"zPosition"];
 
+    // Destination or "to" fades in and drops in.
     CABasicAnimation *dOpacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
     dOpacity.fromValue = @(0.0f);
     dOpacity.toValue = @(1.0f);
