@@ -38,11 +38,16 @@
     // Add perspective for Z axis.
     [self setupPerspective];
 
-    // Style and setup initial field state ready for first appearance.
-    [self setupField];
-
     // Kick off fetch of data feed.
     [self fetchStarFieldFeed];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // Style and setup initial field state ready for first appearance.
+    [self setupField];
 }
 
 - (void)viewDidAppear:(BOOL)animated
