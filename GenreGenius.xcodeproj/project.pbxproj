@@ -21,6 +21,7 @@
 		34DEFBDD1A3A7E6E0049459D /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DEFBDB1A3A7E6E0049459D /* ResultsView.xib */; };
 		34DEFBE01A3A7E810049459D /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBDF1A3A7E810049459D /* ResultsViewController.m */; };
 		34DEFBE31A3A81F20049459D /* ResultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */; };
+		34DEFBE61A3AA6150049459D /* TransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DEFBE51A3AA6150049459D /* TransitionAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		34DEFBDF1A3A7E810049459D /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		34DEFBE11A3A81F20049459D /* ResultCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCollectionViewCell.h; sourceTree = "<group>"; };
 		34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCollectionViewCell.m; sourceTree = "<group>"; };
+		34DEFBE41A3AA6150049459D /* TransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimator.h; sourceTree = "<group>"; };
+		34DEFBE51A3AA6150049459D /* TransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				34DEFBDF1A3A7E810049459D /* ResultsViewController.m */,
 				34DEFBE11A3A81F20049459D /* ResultCollectionViewCell.h */,
 				34DEFBE21A3A81F20049459D /* ResultCollectionViewCell.m */,
+				34DEFBE41A3AA6150049459D /* TransitionAnimator.h */,
+				34DEFBE51A3AA6150049459D /* TransitionAnimator.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				346CEAF91A37CAE700D0D738 /* main.m in Sources */,
 				34DEFBE01A3A7E810049459D /* ResultsViewController.m in Sources */,
 				34DEFBC91A394A240049459D /* FeedDataProvider.m in Sources */,
+				34DEFBE61A3AA6150049459D /* TransitionAnimator.m in Sources */,
 				34DEFBE31A3A81F20049459D /* ResultCollectionViewCell.m in Sources */,
 				34DEFBC81A394A240049459D /* FeedData.m in Sources */,
 				34DEFBCE1A394AA10049459D /* SearchService.m in Sources */,

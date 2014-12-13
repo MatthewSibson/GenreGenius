@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "SearchViewController.h"
+#import "TransitionAnimator.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UINavigationControllerDelegate>
 
 @end
 
@@ -24,6 +25,11 @@
     // We'll be providing our own navigation so no navigation bar is needed.
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.navigationBarHidden = YES;
+
+    // Usually I architect my applications to keep the app delegate as free of any code not related to UIApplicationDelegate
+    // as possible, but in this case the app is small making it the logical place.
+    // Become the navigation controller delegate so that we can control transition between view controllers.
+    navigationController.delegate = self;
 
     // Create the main window with the navigation controller at the root.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -54,6 +60,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Navigation Controller Delegate
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    return [[TransitionAnimator alloc] init];
 }
 
 @end
